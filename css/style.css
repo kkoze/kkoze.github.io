@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0d0d0d;
+  color: #f5f5f5;
+
+  font-family: Inter, sans-serif;
+
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  letter-spacing: 0.5px;
+
+  overflow: hidden;
+}
+
+/* film grain */
+
+.grain {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+
+  opacity: 0.07;
+
+  pointer-events: none;
+
+  z-index: 10;
+}
+
+/* layout */
+
+.hero {
+  width: 100%;
+  max-width: 1000px;
+
+  padding: 40px;
+}
+
+.profile-container {
+  display: flex;
+
+  align-items: center;
+
+  gap: 70px;
+}
+
+/* portrait */
+
+.profile-img {
+  width: 250px;
+
+  height: 330px;
+
+  object-fit: cover;
+
+  border-radius: 3px;
+
+  filter: grayscale(100%);
+
+  transition: 0.5s;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.profile-img:hover {
+  filter: grayscale(0%);
+
+  transform: scale(1.03);
+}
+
+/* typography */
+
+h1 {
+  font-family: "Playfair Display", serif;
+
+  font-size: 3.2rem;
+
+  letter-spacing: 2px;
+
+  font-weight: 600;
+}
+
+#position {
+  margin-top: 12px;
+
+  font-size: 0.95rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 2px;
+
+  opacity: 0.7;
+}
+
+#tagline {
+  margin-top: 15px;
+
+  font-size: 0.85rem;
+
+  opacity: 0.5;
+
+  max-width: 420px;
+
+  line-height: 1.6;
+}
+
+/* button */
+
+button {
+  margin-top: 30px;
+
+  background: none;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  color: white;
+
+  padding: 10px 18px;
+
+  font-size: 0.75rem;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+button:hover {
+  background: white;
+
+  color: black;
+}
+
+/* light theme */
+
+.light-mode {
+  background: #f3f3f3;
+
+  color: #111;
+}
+
+.light-mode button {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+
+  color: black;
+}
+
+.light-mode button:hover {
+  background: black;
+
+  color: white;
+}
+
+.light-mode .profile-img {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* responsive */
+
+@media (max-width: 800px) {
+  .profile-container {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .profile-img {
+    width: 220px;
+
+    height: 290px;
+  }
+}
