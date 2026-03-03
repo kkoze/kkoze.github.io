@@ -3,19 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Portfolio</title>
-
     <link rel="stylesheet" href="css/style.css" />
-
+    <link rel="stylesheet" href="css/spotify.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
   </head>
-
   <body>
+    <div class="bubbles">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+
+    <div class="glass-overlay"></div>
     <div class="grain"></div>
+
+    <nav class="menubar">
+      <div class="menubar-left">
+        <span class="menubar-logo">&#63743;</span>
+        <span class="app-name">Ed Cezar</span>
+        <div class="menu-items">
+          <a href="#projects">Projects</a>
+          <a href="#career">Career</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="notch"></div>
+      <div class="menubar-right">
+        <span class="sys-icon" id="musicBtn" onclick="togglePlayer()"
+          >&#9835;</span
+        >
+        <span class="sys-icon">&#8857;</span>
+        <div class="dropdown-wrap">
+          <span class="sys-icon" id="dropdownBtn" onclick="toggleDropdown()"
+            >&#9776;</span
+          >
+          <div class="dropdown" id="dropdown">
+            <a href="https://github.com/YOUR_USERNAME" target="_blank">
+              <span class="dropdown-icon">&#128025;</span> Github
+            </a>
+            <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank">
+              <span class="dropdown-icon">&#128101;</span> LinkedIn
+            </a>
+            <a href="mailto:YOUR_EMAIL@gmail.com">
+              <span class="dropdown-icon">&#9993;</span> Gmail
+            </a>
+          </div>
+        </div>
+
+        <span class="clock" id="clock"></span>
+      </div>
+    </nav>
+
+    <!-- spotify player mounts here -->
+    <div id="spotifyMount"></div>
 
     <section class="hero">
       <div class="profile-container">
@@ -25,19 +73,23 @@
           src="assets/profile.jpg"
           alt="profile"
         />
-
         <div class="info">
           <h1 id="name"></h1>
-
           <p id="position"></p>
-
           <p id="tagline"></p>
-
-          <button id="themeToggle">toggle mood</button>
+          <div class="highlights" id="highlights"></div>
+          <div class="skills" id="skills"></div>
         </div>
       </div>
     </section>
 
+    <div class="mood-fab" id="moodBtn">
+      <span class="mood-icon">&#9680;</span>
+      <span class="mood-label" id="moodLabel">lava</span>
+    </div>
+
+    <script src="js/tracks.js"></script>
+    <script src="js/spotify.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

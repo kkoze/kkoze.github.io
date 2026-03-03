@@ -5,185 +5,480 @@
 }
 
 body {
-  background: #0d0d0d;
+  background: #1a0500;
   color: #f5f5f5;
-
   font-family: Inter, sans-serif;
-
   height: 100vh;
-
   display: flex;
-  align-items: center;
-  justify-content: center;
-
+  flex-direction: column;
   letter-spacing: 0.5px;
-
   overflow: hidden;
 }
 
-/* film grain */
-
-.grain {
+/* ── lava lamp bubbles ── */
+.bubbles {
   position: fixed;
-
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
-
-  background: url("https://grainy-gradients.vercel.app/noise.svg");
-
-  opacity: 0.07;
-
-  pointer-events: none;
-
-  z-index: 10;
+  z-index: 0;
+  overflow: hidden;
 }
 
-/* layout */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0.75;
+  animation: lava linear infinite;
+  transform-origin: center;
+}
 
-.hero {
+.bubble:nth-child(1) {
+  width: 280px;
+  height: 280px;
+  background: #ff3c00;
+  bottom: -100px;
+  left: 10%;
+  animation-duration: 12s;
+  animation-delay: 0s;
+}
+.bubble:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  background: #ff8c00;
+  bottom: -100px;
+  left: 30%;
+  animation-duration: 16s;
+  animation-delay: -4s;
+}
+.bubble:nth-child(3) {
+  width: 340px;
+  height: 340px;
+  background: #c2001a;
+  bottom: -150px;
+  left: 55%;
+  animation-duration: 10s;
+  animation-delay: -2s;
+}
+.bubble:nth-child(4) {
+  width: 180px;
+  height: 180px;
+  background: #ff5500;
+  bottom: -80px;
+  left: 75%;
+  animation-duration: 14s;
+  animation-delay: -7s;
+}
+.bubble:nth-child(5) {
+  width: 260px;
+  height: 260px;
+  background: #ff2200;
+  bottom: -120px;
+  left: 42%;
+  animation-duration: 18s;
+  animation-delay: -9s;
+}
+.bubble:nth-child(6) {
+  width: 150px;
+  height: 150px;
+  background: #ff6a00;
+  bottom: -60px;
+  left: 20%;
+  animation-duration: 11s;
+  animation-delay: -3s;
+}
+.bubble:nth-child(7) {
+  width: 310px;
+  height: 310px;
+  background: #de1a00;
+  bottom: -130px;
+  left: 65%;
+  animation-duration: 20s;
+  animation-delay: -6s;
+}
+
+@keyframes lava {
+  0% {
+    transform: translateY(0) scaleX(1) scaleY(1);
+    border-radius: 50%;
+  }
+  20% {
+    transform: translateY(-25vh) scaleX(1.1) scaleY(0.92);
+    border-radius: 45% 55% 52% 48% / 48% 52% 48% 52%;
+  }
+  40% {
+    transform: translateY(-50vh) scaleX(0.92) scaleY(1.12);
+    border-radius: 55% 45% 48% 52% / 52% 48% 55% 45%;
+  }
+  55% {
+    transform: translateY(-70vh) scaleX(1.08) scaleY(0.95);
+    border-radius: 48% 52% 55% 45% / 45% 55% 48% 52%;
+  }
+  70% {
+    transform: translateY(-85vh) scaleX(0.95) scaleY(1.08);
+    border-radius: 52% 48% 45% 55% / 55% 45% 52% 48%;
+  }
+  85% {
+    transform: translateY(-95vh) scaleX(1.05) scaleY(0.97);
+    border-radius: 50% 50% 52% 48% / 48% 52% 50% 50%;
+  }
+  100% {
+    transform: translateY(-110vh) scaleX(1) scaleY(1);
+    border-radius: 50%;
+  }
+}
+
+/* ── frosted glass overlay ── */
+.glass-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 1000px;
+  height: 100%;
+  backdrop-filter: blur(70px) saturate(1.6);
+  -webkit-backdrop-filter: blur(70px) saturate(1.6);
+  background: rgba(20, 4, 0, 0.5);
+  z-index: 1;
+  pointer-events: none;
+}
 
-  padding: 40px;
+/* film grain */
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── macOS menu bar ── */
+.menubar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 100;
+  user-select: none;
+}
+
+.notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 126px;
+  height: 28px;
+  background: #000;
+  border-radius: 0 0 18px 18px;
+  z-index: 101;
+}
+
+.menubar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.menubar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menubar-logo {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.app-name {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.menu-items {
+  display: flex;
+}
+
+.menu-items a {
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  padding: 4px 9px;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+}
+.menu-items a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.sys-icon {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 2px 5px;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+.sys-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.clock {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.75);
+  min-width: 50px;
+  text-align: right;
+}
+
+/* ── hero ── */
+.hero {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 40px 40px;
 }
 
 .profile-container {
   display: flex;
-
   align-items: center;
-
   gap: 70px;
+  max-width: 1000px;
+  width: 100%;
 }
-
-/* portrait */
 
 .profile-img {
   width: 250px;
-
   height: 330px;
-
   object-fit: cover;
-
-  border-radius: 3px;
-
+  border-radius: 12px;
   filter: grayscale(100%);
-
   transition: 0.5s;
-
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
-
 .profile-img:hover {
   filter: grayscale(0%);
-
   transform: scale(1.03);
 }
 
-/* typography */
-
 h1 {
   font-family: "Playfair Display", serif;
-
   font-size: 3.2rem;
-
   letter-spacing: 2px;
-
   font-weight: 600;
+  text-shadow: 0 2px 30px rgba(255, 80, 0, 0.3);
 }
 
 #position {
   margin-top: 12px;
-
   font-size: 0.95rem;
-
   text-transform: uppercase;
-
   letter-spacing: 2px;
-
-  opacity: 0.7;
+  opacity: 0.68;
 }
 
 #tagline {
   margin-top: 15px;
-
   font-size: 0.85rem;
-
   opacity: 0.5;
-
   max-width: 420px;
-
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-/* button */
+/* ── highlights ── */
+.highlights {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
 
-button {
-  margin-top: 30px;
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
 
-  background: none;
+.highlight-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #fff;
+}
 
-  border: 1px solid rgba(255, 255, 255, 0.3);
-
-  color: white;
-
-  padding: 10px 18px;
-
-  font-size: 0.75rem;
-
-  letter-spacing: 2px;
-
+.highlight-label {
+  font-size: 0.65rem;
   text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.45;
+}
 
+/* ── skills ── */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+  max-width: 440px;
+}
+
+.skill-tag {
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.7);
+  transition: 0.2s;
+}
+.skill-tag:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── mood FAB ── */
+.mood-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   cursor: pointer;
-
-  transition: 0.3s;
+  transition: background 0.2s, transform 0.15s, border-color 0.2s;
+  user-select: none;
+}
+.mood-fab:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: scale(1.04);
+}
+.mood-fab:active {
+  transform: scale(0.97);
 }
 
-button:hover {
-  background: white;
-
-  color: black;
+.mood-icon {
+  font-size: 0.85rem;
+}
+.mood-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* light theme */
-
-.light-mode {
-  background: #f3f3f3;
-
-  color: #111;
+/* ── dropdown ── */
+.dropdown-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.light-mode button {
-  border: 1px solid rgba(0, 0, 0, 0.3);
+.dropdown {
+  position: absolute;
+  top: 32px;
+  right: 0;
+  min-width: 150px;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 300;
 
-  color: black;
+  /* hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px) scale(0.97);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.light-mode button:hover {
-  background: black;
-
-  color: white;
+.dropdown.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0) scale(1);
 }
 
-.light-mode .profile-img {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+.dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
 }
 
-/* responsive */
+.dropdown a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
 
+.dropdown a:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dropdown-icon {
+  font-size: 0.8rem;
+}
+
+#dropdownBtn.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* ── responsive ── */
 @media (max-width: 800px) {
+  .app-name {
+    display: none;
+  }
   .profile-container {
     flex-direction: column;
-
     text-align: center;
   }
-
   .profile-img {
-    width: 220px;
-
-    height: 290px;
+    width: 200px;
+    height: 260px;
+  }
+  .highlights {
+    gap: 16px;
+    flex-wrap: wrap;
   }
 }
