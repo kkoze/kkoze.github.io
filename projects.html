@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Ed Cezar</title>
+    <!-- apply saved theme bg instantly before CSS loads to prevent flash -->
+    <script>
+      (function () {
+        const bgs = ["#1a0500", "#00101a", "#021a05", "#07001a", "#1a0a00"];
+        const i = parseInt(localStorage.getItem("theme") || "0", 10);
+        document.documentElement.style.background = bgs[i] || bgs[0];
+        document.documentElement.style.minHeight = "100vh";
+      })();
+    </script>
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- layout runs in head so menubar/clock exist before body renders -->
+    <script src="js/layout.js" defer></script>
+  </head>
+  <body>
+    <app-layout active="projects"></app-layout>
+
+    <main class="projects-page">
+      <header class="projects-header">
+        <p class="projects-eyebrow">Portfolio</p>
+        <h1 class="projects-title">Projects</h1>
+        <p class="projects-subtitle">
+          A collection of work built with purpose.
+        </p>
+      </header>
+
+      <section class="project-section" id="web-projects">
+        <div class="section-label">
+          <span class="section-index">01</span>
+          <h2 class="section-title">Web Projects</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="cards-grid" id="webProjectsGrid"></div>
+      </section>
+
+      <section class="project-section" id="side-projects">
+        <div class="section-label">
+          <span class="section-index">02</span>
+          <h2 class="section-title">Side Projects</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="cards-grid" id="sideProjectsGrid"></div>
+      </section>
+    </main>
+
+    <script src="js/projects.js"></script>
+  </body>
+</html>

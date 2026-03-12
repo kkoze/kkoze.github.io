@@ -1,0 +1,43 @@
+/* ============================================================
+   animations.css — reusable entrance animations
+   Add class="reveal" to any element to animate it in.
+   Stagger delay via --delay CSS variable.
+   ============================================================ */
+
+/* ── base reveal state (hidden before animation) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: revealUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── image: fade in + slight scale up ── */
+.reveal-img {
+  opacity: 0;
+  transform: scale(0.96);
+  animation: revealImg 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes revealImg {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

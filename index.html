@@ -1,68 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+    <title>Portfolio — Ed Cezar</title>
+    <!-- apply saved theme bg instantly before CSS loads to prevent flash -->
+    <script>
+      (function () {
+        const bgs = ["#1a0500", "#00101a", "#021a05", "#07001a", "#1a0a00"];
+        const i = parseInt(localStorage.getItem("theme") || "0", 10);
+        document.documentElement.style.background = bgs[i] || bgs[0];
+        document.documentElement.style.minHeight = "100vh";
+      })();
+    </script>
+    <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
     <link rel="stylesheet" href="css/spotify.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+    <!-- layout runs in head so menubar/clock exist before body renders -->
+    <script src="js/layout.js" defer></script>
   </head>
   <body>
-    <div class="bubbles">
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-    </div>
+    <app-layout active="home"></app-layout>
 
-    <div class="glass-overlay"></div>
-    <div class="grain"></div>
-
-    <nav class="menubar">
-      <div class="menubar-left">
-        <span class="menubar-logo">&#63743;</span>
-        <span class="app-name">Ed Cezar</span>
-        <div class="menu-items">
-          <a href="#projects">Projects</a>
-          <a href="#career">Career</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-      <div class="notch"></div>
-      <div class="menubar-right">
-        <span class="sys-icon" id="musicBtn" onclick="togglePlayer()"
-          >&#9835;</span
-        >
-        <span class="sys-icon">&#8857;</span>
-        <div class="dropdown-wrap">
-          <span class="sys-icon" id="dropdownBtn" onclick="toggleDropdown()"
-            >&#9776;</span
-          >
-          <div class="dropdown" id="dropdown">
-            <a href="https://github.com/YOUR_USERNAME" target="_blank">
-              <span class="dropdown-icon">&#128025;</span> Github
-            </a>
-            <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank">
-              <span class="dropdown-icon">&#128101;</span> LinkedIn
-            </a>
-            <a href="mailto:YOUR_EMAIL@gmail.com">
-              <span class="dropdown-icon">&#9993;</span> Gmail
-            </a>
-          </div>
-        </div>
-
-        <span class="clock" id="clock"></span>
-      </div>
-    </nav>
-
-    <!-- spotify player mounts here -->
     <div id="spotifyMount"></div>
 
     <section class="hero">
@@ -82,11 +46,6 @@
         </div>
       </div>
     </section>
-
-    <div class="mood-fab" id="moodBtn">
-      <span class="mood-icon">&#9680;</span>
-      <span class="mood-label" id="moodLabel">lava</span>
-    </div>
 
     <script src="js/tracks.js"></script>
     <script src="js/spotify.js"></script>
